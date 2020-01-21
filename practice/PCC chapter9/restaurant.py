@@ -24,13 +24,16 @@ class Restaurant():
     def read_number_served(self):
         print("There are {} people".format(self.number_served))
 
+def main():
+    mcd = Restaurant("Mc Donald","Hamburger, fries")
+    mcd.describe_restaurant()
+    mcd.open_restaurant()
 
-mcd = Restaurant("Mc Donald","Hamburger, fries")
-mcd.describe_restaurant()
-mcd.open_restaurant()
+    mcd.read_number_served()
+    mcd.set_number_served(100)
+    mcd.read_number_served()
+    mcd.increment_number_served(10)
+    mcd.read_number_served()
 
-mcd.read_number_served()
-mcd.set_number_served(100)
-mcd.read_number_served()
-mcd.increment_number_served(10)
-mcd.read_number_served()
+if __name__ == '__main__':
+    main()
