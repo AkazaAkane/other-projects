@@ -1,4 +1,4 @@
-class User():
+class user():
 
     def __init__(self,first_name,last_name):
         self.first_name = first_name
@@ -20,13 +20,17 @@ class User():
     def read_login_attempts(self):
         print(str(self.login_attempts)+"login attempts exist.")
 
-yuhaoc = User("Yuhao","Chen")
-yuhaoc.describe_user()
-yuhaoc.greet_user()
+def main():
+    yuhaoc = User("Yuhao","Chen")
+    yuhaoc.describe_user()
+    yuhaoc.greet_user()
 
-yuhaoc.read_login_attempts()
-yuhaoc.increment_login_attempts()
-yuhaoc.increment_login_attempts()
-yuhaoc.read_login_attempts()
-yuhaoc.reset_login_attempts()
-yuhaoc.read_login_attempts()
+    yuhaoc.read_login_attempts()
+    yuhaoc.increment_login_attempts()
+    yuhaoc.increment_login_attempts()
+    yuhaoc.read_login_attempts()
+    yuhaoc.reset_login_attempts()
+    yuhaoc.read_login_attempts()
+
+if __name__ == '__main__':
+    main()
