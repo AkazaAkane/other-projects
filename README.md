@@ -1,6 +1,6 @@
-# other projects
+# Other projects
 
-The folder contains other python projects
+The folder contains other python projects (but mainly practices).
 
 ## Installation
 
