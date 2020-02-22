@@ -1,0 +1,68 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# DC senior honor list data analysis
+
+## Data Preprocessing
+```{r}
+library(dplyr)
+library(readxl)
+library(wordcloud2)
+library(stopwords)
+setwd("~/Downloads")
+```
+
+```{r}
+honor.list <- read_xlsx("honor_list.xlsx")
+honor.list <- honor.list[,1:7]
+head(honor.list)
+```
+
+```{r}
+honor.list <- transform(honor.list, 
+                        Advisor=paste(`Faculty Thesis Advisor`, `...7`, sep=" "))
+honor.list <- honor.list[,c(1,2,3,4,5,8)]
+head(honor.list)
+```
+
+```{r}
+
+honor.list %>%
+  filter(Year >= 2015) %>%
+  group_by(Advisor) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count))
+```
+
+```{r}
+honor.list %>%
+  filter(Year >= 2015) %>%
+  group_by(Department) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count))
+```
+
+```{r}
+honor.list %>%
+  filter(Department == "Economics and Statistics") 
+```
+## Word Cloud on thesis
+```{r}
+thesis <- strsplit(tolower(honor.list$`Thesis.Title`)," ")
+unlist(thesis)
+df <- data.frame(table(unlist(thesis))) 
+df <- df %>%
+  arrange(desc(Freq))
+all_stops <- c("word1", "word2", stopwords("en"))
+df <- df[!(df$Var %in% all_stops),]
+```
+
+```{r}
+wordcloud2(df)
+```
