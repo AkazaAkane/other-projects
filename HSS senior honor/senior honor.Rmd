@@ -52,6 +52,12 @@ honor.list %>%
 honor.list %>%
   filter(Department == "Economics and Statistics") 
 ```
+```{r}
+honor.list %>%
+  filter(Department == "Statistics"| Department == "Statistics & Data Science") %>%
+  arrange(desc(Year))
+```
+
 ## Word Cloud on thesis
 ```{r}
 thesis <- strsplit(tolower(honor.list$`Thesis.Title`)," ")
