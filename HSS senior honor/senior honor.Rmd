@@ -50,11 +50,23 @@ honor.list %>%
 
 ```{r}
 honor.list %>%
-  filter(Department == "Economics and Statistics") 
+  filter(Department == "Economics") %>%
+  arrange(desc(Year))
 ```
 ```{r}
 honor.list %>%
   filter(Department == "Statistics"| Department == "Statistics & Data Science") %>%
+  arrange(desc(Year))
+```
+
+```{r}
+honor.list %>%
+  filter(Advisor == "Rebecca Nugent")
+
+```
+
+```{r}
+honor.list %>%
   arrange(desc(Year))
 ```
 
